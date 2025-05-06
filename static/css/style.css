@@ -1,0 +1,53 @@
+/* Custom styles for the AI Chatbot */
+
+/* Chat container styling */
+#chat-messages {
+    min-height: 300px;
+    max-height: 70vh;
+}
+
+/* Message animations */
+.bg-blue-50, .bg-gray-100 {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading animation */
+.loading-message p {
+    display: flex;
+    align-items: center;
+}
+
+.loading-message p::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    margin-left: 8px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    border-top-color: #3b82f6;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    #chat-messages {
+        max-height: 60vh;
+    }
+}
