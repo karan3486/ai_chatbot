@@ -3,6 +3,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const userInput = document.getElementById('user-input');
     const chatMessages = document.getElementById('chat-messages');
     
+    // Focus input field on page load for desktop
+    if (window.innerWidth > 768) {
+        userInput.focus();
+    }
+    
+    // Handle mobile viewport adjustments when keyboard appears
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+        // Adjust viewport when input is focused (keyboard appears)
+        userInput.addEventListener('focus', () => {
+            // Small delay to let keyboard appear
+            setTimeout(() => {
+                window.scrollTo(0, document.body.scrollHeight);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 300);
+        });
+    }
+    
     // Function to add a message to the chat
     function addMessage(message, isUser = false) {
         const messageDiv = document.createElement('div');
